@@ -24,4 +24,4 @@
 - Une cartographie interactive permet la spatialisation des données. Attention : un même journal peut avoir plusieurs villes de publication différentes. Il est alors compté plusieurs fois sur les diagrammes géographiques ainsi que sur la cartographie.
 
 ## Corpus
-- Se reporter à la notice de [Gallicagram](http://gallicagram.hopto.org:3838/gallicagram_app/)
+- Se reporter à la notice de [Gallicagram](https://gallicagram.herokuapp.com/)
