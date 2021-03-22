@@ -495,7 +495,7 @@ ui <- navbarPage("Gallicapresse",
                                                     conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende6"),align="right"))
                                           ))),
                  tabPanel("Notice",shiny::includeMarkdown("Notice.md")),
-                 tabPanel(title=HTML("<li><a href='http://gallicagram.hopto.org:3838/gallicagram_app/' target='_blank'>Gallicagram"))
+                 tabPanel(title=HTML("<li><a href='https://gallicagram.herokuapp.com/' target='_blank'>Gallicagram"))
 )
 
 
