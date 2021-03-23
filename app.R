@@ -492,7 +492,8 @@ ui <- navbarPage("Gallicapresse",
                                                     conditionalPanel(condition="input.structure==2",leafletOutput("plot7")),
                                                     conditionalPanel(condition="input.structure==2",downloadButton('downloadPlot7', 'Télécharger la carte interactive')),
                                                     conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende5"),align="right")),
-                                                    conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende6"),align="right"))
+                                                    conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende6"),align="right")),
+                                                    h2(textOutput("currentTime"), style="color:white")
                                           ))),
                  tabPanel("Notice",shiny::includeMarkdown("Notice.md")),
                  tabPanel(title=HTML("<li><a href='https://gallicagram.herokuapp.com/' target='_blank'>Gallicagram"))
@@ -709,7 +710,10 @@ server <- function(input, output){
       })
   })})
   
-  
+  output$currentTime <- renderText({
+    invalidateLater(1000, session)
+    paste("The current time is", Sys.time())
+  })
   
 }
 
