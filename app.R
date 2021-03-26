@@ -495,7 +495,8 @@ ui <- navbarPage("Gallicapresse",
                                                     conditionalPanel(condition="input.structure==2",downloadButton('downloadPlot7', 'Télécharger la carte interactive')),
                                                     h2(textOutput("currentTime"), style="color:white")
                                           ))),
-                 tabPanel("Notice",shiny::includeMarkdown("Notice.md")),
+                 tabPanel("Notice",shiny::includeMarkdown("Notice.md"),
+                                                    h2(textOutput("currentTime"), style="color:white")),
                  tabPanel(title=HTML("<li><a href='https://gallicagram.herokuapp.com/' target='_blank'>Gallicagram"))
 )
 
