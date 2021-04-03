@@ -461,6 +461,7 @@ get_data<-function (tot_df,mot,dateRange,mois_pub){
   names(data) = c("tableau","presse","theme","quotidiens","tableau2","villes")
   return(data)}
 
+
 options(shiny.maxRequestSize = 100*1024^2)
 
 ui <- navbarPage("Gallicapresse",
@@ -504,7 +505,9 @@ ui <- navbarPage("Gallicapresse",
                                                     conditionalPanel(condition="input.structure==2",leafletOutput("plot7")),
                                                     conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende5"),align="right")),
                                                     conditionalPanel(condition="input.structure==2",fluidRow(textOutput("legende6"),align="right")),
-                                                    conditionalPanel(condition="input.structure==2",downloadButton('downloadPlot7', 'Télécharger la carte interactive'))
+                                                    conditionalPanel(condition="input.structure==2",downloadButton('downloadPlot7', 'Télécharger la carte interactive')),
+                                                    p(""),
+                                                    h2(textOutput("currentTime"), style="color:white")
                                           ))),
                  tabPanel("Notice",shiny::includeMarkdown("Notice.md")),
                  tabPanel(title=HTML("<li><a href='http://gallicagram.hopto.org:3838/gallicagram_app/' target='_blank'>Gallicagram"))
@@ -513,7 +516,12 @@ ui <- navbarPage("Gallicapresse",
 
 
 # Define server logic required to draw a histogram
-server <- function(input, output){
+server <- function(input, output,session){
+  
+  output$currentTime <- renderText({
+    invalidateLater(1000, session)
+    paste("The current time is", Sys.time())
+  })
 
   
   #Fonction d'affichage :
@@ -741,5 +749,7 @@ server <- function(input, output){
   
   
 }
+
+
 
 shinyApp(ui = ui, server = server)
